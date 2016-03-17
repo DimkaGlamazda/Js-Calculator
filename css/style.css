@@ -1,0 +1,61 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	background-color: #A64800;
+}
+#header{
+	width: 900px;
+	height: 200px;
+	margin: auto;
+	border-radius: 0 0 10px 10px;
+	background-color: #BF6E30;
+	font: bold 48px/1 cursive;
+	text-align: center;
+}
+#footer{
+	width: 900px;
+	height: 200px;
+	margin: auto;
+	border-radius:10px 10px 0 0;
+	background-color: #BF6E30;
+	text-align: center;
+}
+#footer h2{
+	padding-top: 140px;
+}
+#container{
+	width: 900px;
+	height: 300px;
+	margin: auto;
+	border-radius:10px;
+	background-color: #FF6F00;
+}
+#container form{
+	width: 400px;
+	height: 250px;
+	padding-top: 20px;
+	margin: auto;
+}
+#icon{
+	width: 379px;
+	height: 50px;
+	padding: 0 10px 0 10px;
+	font: bold 48px/1.1 cursive;
+	background-color: #FF9340;
+}
+.button{
+	cursor: pointer;
+	width: 79px;
+	height: 50px;
+	font: bold 30px/1.5 cursive;
+	background-color: #FFB073;
+}
+#equals{
+	height: 102px;
+}
+#zero{
+	width: 160px;
+}

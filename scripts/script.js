@@ -35,11 +35,11 @@ window.onload = function() {
 					icon.value = number_one + operator + number_two;
 				}
 			}else if(e.target.id == "fraction"){
-				if(fractionToggle && numToggle && res == 0 && number_one != 0){
+				if(fractionToggle && numToggle && res == 0){
 					icon.value += e.target.innerHTML;
 					number_one += e.target.innerHTML;
 					fractionToggle = false;
-				} else if(fractionToggle && numToggle == false && number_two != 0){
+				} else if(fractionToggle && numToggle == false){
 					icon.value += e.target.innerHTML;
 					number_two += e.target.innerHTML;
 					fractionToggle = false;

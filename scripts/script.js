@@ -76,11 +76,21 @@ window.onload = function() {
 		if (number_two == "") {number_two = 0;}
 		switch(operationToggle){
 			case 1:
+				if(+number_one == 0 || number_two == 0){
+					icon.value = "";
+					remove();
+					break;
+				}
 				res = +number_one / +number_two;
 				icon.value = Math.round(res * 10000) / 10000;
 				clear();
 				break;
 			case 2:
+				if(+number_one == 0 || number_two == 0){
+					icon.value = "";
+					remove();
+					break;
+				}
 				res = +number_one * +number_two;
 				icon.value = Math.round(res * 10000) / 10000;
 				clear();

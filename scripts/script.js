@@ -1,4 +1,4 @@
-window.onload = function() {
+document.body.onload = function() {
 	
 
 	var calckObj = new Screen();

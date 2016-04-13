@@ -8,6 +8,7 @@ window.onload = function() {
 	}
 
 
+
 	function Screen() {
 
 
@@ -21,17 +22,10 @@ window.onload = function() {
 		this.resault = undefined;
 
 
-
-		this.calck;
-		this.creation_num;
-		this.creation_operation;
-		this.get_res;
-		this.clear;
-		this.positive_or_negative;
-		this.icon_show;
-		this.fraction;
-
 	}
+
+
+
 
 
 
@@ -50,6 +44,9 @@ window.onload = function() {
 
 			}
 		}
+
+
+
 
 	Screen.prototype.creation_num = function(number) {
 
@@ -70,113 +67,125 @@ window.onload = function() {
 		}
 
 
-		Screen.prototype.creation_operation = function(operation) {
 
-			if (operation.className == "button number") {
 
-				return;
+	Screen.prototype.creation_operation = function(operation) {
 
-			} else if(operation.className == "button operation" && this.operation[0] == 0  && this._num_one != 0){
+		if (operation.className == "button number") {
 
-				this._num_toggle = false;
-				this.fraction_toggle = true;
-				switch(operation.id){
-					case "divide":
-						this.operation[0] = 1;
-						this.operation[1] = '/';
-						this.icon_show(this.operation[1]);
-						break;
-					case "multiply":
-						this.operation[0] = 2;
-						this.operation[1] = '*';
-						this.icon_show(this.operation[1]);
-						break;
-					case "minus":
-						this.operation[0] = 3;
-						this.operation[1] = '-';
-						this.icon_show(this.operation[1]);
-						break;
-					case "plus":
-						this.operation[0] = 4;
-						this.operation[1] = '+';
-						this.icon_show(this.operation[1]);
+			return;
+
+		} else if(operation.className == "button operation" && this.operation[0] == 0  && this._num_one != 0){
+
+			this._num_toggle = false;
+			this.fraction_toggle = true;
+			switch(operation.id){
+				case "divide":
+					this.operation[0] = 1;
+					this.operation[1] = '/';
+					this.icon_show(this.operation[1]);
 					break;
-				}
+				case "multiply":
+					this.operation[0] = 2;
+					this.operation[1] = '*';
+					this.icon_show(this.operation[1]);
+					break;
+				case "minus":
+					this.operation[0] = 3;
+					this.operation[1] = '-';
+					this.icon_show(this.operation[1]);
+					break;
+				case "plus":
+					this.operation[0] = 4;
+					this.operation[1] = '+';
+					this.icon_show(this.operation[1]);
+				break;
 			}
 		}
-
-		Screen.prototype.get_res = function(element) {
-
-			if(element.id == "equals" && this._num_toggle == false && this._num_two != ""){
-				switch(this.operation[0]){
-					case 1:
-						this.resault = (parseInt(this._num_one)) / (parseInt(this._num_two));
-						break;
-					case 2:
-						this.resault = +this._num_one * +this._num_two;
-						break;
-					case 3:
-						this.resault = +this._num_one - +this._num_two;
-						break;
-					case 4:
-						this.resault = (+this._num_one) + (+this._num_two);
-						break;
-				}
-				return this.icon_show("=" + this.resault);
-			}else return;
-		}
+	}
 
 
-		Screen.prototype.clear = function(element) {
 
-			if(element.id == "remove"){
-				this._elem.value = 0;
-				this._num_one = "";
-				this._num_two = "";
-				this._num_toggle = true;
-				this.fraction_toggle = true;
-				this.operation = [0, ""];
-				this.resault = undefined;
+	Screen.prototype.get_res = function(element) {
+
+		if(element.id == "equals" && this._num_toggle == false && this._num_two != ""){
+			switch(this.operation[0]){
+				case 1:
+					this.resault = (parseInt(this._num_one)) / (parseInt(this._num_two));
+					break;
+				case 2:
+					this.resault = +this._num_one * +this._num_two;
+					break;
+				case 3:
+					this.resault = +this._num_one - +this._num_two;
+					break;
+				case 4:
+					this.resault = (+this._num_one) + (+this._num_two);
+					break;
 			}
+			return this.icon_show("=" + this.resault);
+		}else return;
+	}
 
+
+
+
+	Screen.prototype.clear = function(element) {
+
+		if(element.id == "remove"){
+			this._elem.value = 0;
+			this._num_one = "";
+			this._num_two = "";
+			this._num_toggle = true;
+			this.fraction_toggle = true;
+			this.operation = [0, ""];
+			this.resault = undefined;
 		}
 
+	}
 
-		Screen.prototype.positive_or_negative = function(element) {
-			if(element.id != "positive_or_negative") return;
 
-			if(this._num_toggle && this._num_one != ""){
 
-				this._num_one *= -1;
-				this._elem.value = this._num_one;
 
-			} else if (this._num_two != ""){
+	Screen.prototype.positive_or_negative = function(element) {
+		if(element.id != "positive_or_negative") return;
 
-				this._num_two *= -1;
-				this._elem.value = this._num_one + this.operation[1] + this._num_two;
+		if(this._num_toggle && this._num_one != ""){
 
-			}
+			this._num_one *= -1;
+			this._elem.value = this._num_one;
+
+		} else if (this._num_two != ""){
+
+			this._num_two *= -1;
+			this._elem.value = this._num_one + this.operation[1] + this._num_two;
+
 		}
+	}
 
 
-		Screen.prototype.icon_show = function(symbol) {
-			this._elem.value += symbol;
+
+
+	Screen.prototype.icon_show = function(symbol) {
+		this._elem.value += symbol;
+	}
+
+
+
+
+	Screen.prototype.fraction = function(elem) {
+		if (elem.id == "fraction" && this._num_toggle && this.fraction_toggle && this._num_one != "") {
+
+			this._num_one = this._num_one + ".";
+			this._elem.value = this._num_one;
+			this.fraction_toggle = false;
+
+		} else if (elem.id == "fraction" && !this._num_toggle && this.fraction_toggle){
+
+			this._num_two = this._num_two + ".";
+			this._elem.value = this._num_one +this.operation[1]+ this._num_two;
+			this.fraction_toggle = false;
+
 		}
-
-
-		Screen.prototype.fraction = function(elem) {
-			if (elem.id == "fraction" && this._num_toggle && this.fraction_toggle && this._num_one != "") {
-
-				this._num_one = this._num_one + ".";
-				this._elem.value = this._num_one;
-				this.fraction_toggle = false;
-
-			} else if (elem.id == "fraction" && !this._num_toggle && this.fraction_toggle){
-
-				this._num_two = this._num_two + ".";
-				this._elem.value = this._num_one +this.operation[1]+ this._num_two;
-				this.fraction_toggle = false;
-
-			}
-		}
+	}
 }
